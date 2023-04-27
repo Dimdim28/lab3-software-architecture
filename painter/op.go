@@ -70,7 +70,16 @@ func (op *Figure) Do(t screen.Texture) bool {
 
 type Move struct {
 	x, y    int
-	Figures []Figure
+	Figures []*Figure
+}
+
+func (op *Move) Do(t screen.Texture) bool {
+	for i := range op.Figures {
+		op.Figures[i].x += op.x
+		op.Figures[i].y += op.y
+		op.Figures[i].Do(t)
+	}
+	return false
 }
 
 func ResetScreen(t screen.Texture) {
