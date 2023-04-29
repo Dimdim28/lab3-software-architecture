@@ -8,6 +8,7 @@ require (
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200222043503-6f7a984d4dc4 // indirect
 	github.com/jezek/xgb v1.0.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/stretchr/objx v0.5.0 // indirect
 	github.com/stretchr/testify v1.8.2 // indirect
 	golang.org/x/exp/shiny v0.0.0-20230321023759-10a507213a29 // indirect
 	golang.org/x/image v0.7.0 // indirect
