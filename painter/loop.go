@@ -35,8 +35,7 @@ func (l *Loop) Start(s screen.Screen) {
 func (l *Loop) eventProcess() {
 	for {
 		if op := l.MsgQueue.Pull(); op != nil {
-			update := op.Do(l.next)
-			if update {
+			if update := op.Do(l.next); update {
 				l.Receiver.Update(l.next)
 				l.next, l.prev = l.prev, l.next
 			}
