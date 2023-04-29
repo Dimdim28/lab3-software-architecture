@@ -34,7 +34,7 @@ func (l *Loop) Start(s screen.Screen) {
 
 func (l *Loop) eventProcess() {
 	for {
-		if op := l.MsgQueue.pull(); op != nil {
+		if op := l.MsgQueue.Pull(); op != nil {
 			update := op.Do(l.next)
 			if update {
 				l.Receiver.Update(l.next)
@@ -48,7 +48,7 @@ func (l *Loop) eventProcess() {
 func (l *Loop) Post(op Operation) {
 	// TODO: реалізувати додавання операції в чергу. Поточна імплементація
 	if op != nil {
-		l.MsgQueue.push(op)
+		l.MsgQueue.Push(op)
 	}
 }
 
@@ -62,11 +62,11 @@ type messageQueue struct {
 	Queue []Operation
 }
 
-func (MsgQueue *messageQueue) push(op Operation) {
+func (MsgQueue *messageQueue) Push(op Operation) {
 	MsgQueue.Queue = append(MsgQueue.Queue, op)
 }
 
-func (MsgQueue *messageQueue) pull() Operation {
+func (MsgQueue *messageQueue) Pull() Operation {
 	if len(MsgQueue.Queue) == 0 {
 		return nil
 	}
